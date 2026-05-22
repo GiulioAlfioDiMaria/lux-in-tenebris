@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LUX IN TENEBRIS - Le Radici Storiche e la Cronaca</title>
+    <meta name="description" content="Esplora la nascita dell'esorcista nella storia e il caso reale del 1949 che ispirò William Peter Blatty per L'Esorcista.">
+    <link rel="stylesheet" href="https://use.typekit.net/xdi4awz.css">
+    <link rel="stylesheet" href="style.css">
+    <script src="navigation.js" defer></script>
+    <style>
+        .interactive-sidebar {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+        .interactive-card {
+            background-color: var(--card-bg);
+            border: 1px solid var(--grid-color);
+            padding: 1.5rem;
+            cursor: pointer;
+            transition: var(--transition-smooth);
+            position: relative;
+        }
+        .interactive-card::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            height: 100%;
+            width: 2px;
+            background-color: var(--accent-color);
+            opacity: 0;
+            transition: var(--transition-smooth);
+        }
+        .interactive-card:hover, .interactive-card.active {
+            border-color: var(--accent-color);
+            box-shadow: 0 0 15px rgba(140, 149, 249, 0.15);
+            transform: translateX(5px);
+        }
+        .interactive-card.active::before {
+            opacity: 1;
+        }
+        .interactive-card h3 {
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+            color: var(--text-color);
+            letter-spacing: 0.1em;
+            transition: var(--transition-smooth);
+        }
+        .interactive-card.active h3, .interactive-card:hover h3 {
+            color: var(--accent-color);
+        }
+        .interactive-card p {
+            font-size: 1rem;
+            line-height: 1.4;
+            color: rgba(245, 245, 247, 0.6);
+        }
+        .interactive-card .card-num {
+            font-family: var(--font-serif);
+            font-size: 0.85rem;
+            color: var(--accent-color);
+            display: block;
+            margin-bottom: 0.2rem;
+        }
+        
+        /* Details styling on the right side */
+        .detail-pane {
+            display: none;
+            animation: fadeIn 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+        .detail-pane.active {
+            display: block;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .detail-pane .section-header p.section-subtitle-accent {
+            text-align: left;
+            margin-inline: 0;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="page-container">
+        
+        <div class="split-layout-container">
+            <aside class="split-left-sidebar">
+                <h1 class="split-left-title">Le Radici Storiche</h1>
+                
+                <div class="interactive-sidebar">
+                    <div class="interactive-card active" data-target="dogma">
+                        <span class="card-num">DOSSIER PART 01</span>
+                        <h3>Le Radici & Il Dogma</h3>
+                        <p>L'origine biblica dell'esorcista e il Rituale Romano del 1614.</p>
+                    </div>
+                    
+                    <div class="interactive-card" data-target="santi">
+                        <span class="card-num">DOSSIER PART 02</span>
+                        <h3>Esorcisti Leggendari</h3>
+                        <p>I santi esorcisti celebri nella lotta contro l'oscurità.</p>
+                    </div>
+                    
+                    <div class="interactive-card" data-target="caso-1949">
+                        <span class="card-num">DOSSIER PART 03</span>
+                        <h3>Il Caso Reale del 1949</h3>
+                        <p>La cronaca documentata del ragazzo del Maryland.</p>
+                    </div>
+                    
+                    <div class="interactive-card" data-target="diario-registri">
+                        <span class="card-num">DOSSIER PART 04</span>
+                        <h3>Diario & Registri</h3>
+                        <p>I documenti d'archivio gesuiti e le prove dei fenomeni.</p>
+                    </div>
+                </div>
+            </aside>
+
+            <!-- Right Column (Dynamic Detail Screen) -->
+            <main class="split-right-content">
+                
+                <!-- Detail Panel 1: Dogma -->
+                <div class="detail-pane active" id="dogma">
+                    <div class="section-header" style="text-align: left; margin-bottom: 2rem;">
+                        <h2 class="section-title-accent">La Nascita del Dogma</h2>
+                        <p class="section-subtitle-accent">La codificazione liturgica del Rituale Romano</p>
+                    </div>
+                    <div style="color: rgba(245,245,247,0.85); display: flex; flex-direction: column; gap: 1.5rem;">
+                        <p>
+                            La figura dell'esorcista ha radici antichissime: i Vangeli già parlano di Gesù che scaccia demoni e trasmette ai suoi seguaci questo potere. Nel Medioevo e nell'età moderna, l'aumento dei casi di presunta possessione e la sovrapposizione con i fenomeni di stregoneria spinsero la Chiesa cattolica a normare la materia.
+                        </p>
+                        <p>
+                            Nel 1614 venne codificato il <em>Rituale Romano</em> (<em>Rituale Romanum</em>), un testo fondamentale che designava sacerdoti specifici, autorizzati dal proprio Vescovo, a compiere esorcismi.
+                        </p>
+                        <p>
+                            Il testo indicava i criteri rigidi per discernere la possessione dalla patologia mentale:
+                        </p>
+                        <ul style="margin-left: 2rem; display: flex; flex-direction: column; gap: 0.8rem; list-style-type: square; color: var(--accent-color);">
+                            <li><strong style="color: var(--text-color);">Xenoglossia:</strong> Parlare o capire lingue straniere sconosciute al soggetto.</li>
+                            <li><strong style="color: var(--text-color);">Ierognosia:</strong> La reazione violenta e inspiegabile agli oggetti sacri, all'acqua benedetta o alle preghiere liturgiche.</li>
+                            <li><strong style="color: var(--text-color);">Facultates supra vires:</strong> Dimostrare una forza fisica sproporzionata rispetto all'età e alla costituzione corporea.</li>
+                        </ul>
+                        <p>
+                            Ancora oggi, la Chiesa conserva questa pratica con estrema cautela, affidando il ministero solo a sacerdoti esperti e specificamente designati dalla gerarchia ecclesiastica, esigendo indagini mediche e psichiatriche preventive.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Detail Panel 2: Santi -->
+                <div class="detail-pane" id="santi">
+                    <div class="section-header" style="text-align: left; margin-bottom: 2rem;">
+                        <h2 class="section-title-accent">Esorcisti Leggendari</h2>
+                        <p class="section-subtitle-accent">Simboli di potere spirituale contro le tenebre</p>
+                    </div>
+                    
+                    <div class="santi-grid">
+                        <!-- Santo 1 -->
+                        <div class="santo-card">
+                            <div class="santo-icon">✙</div>
+                            <h3 class="santo-title">San Filippo d'Agira</h3>
+                            <p class="santo-desc">
+                                Considerato un esorcista leggendario, figura cardine della tradizione siciliana e bizantina, celebre per il suo potere spirituale nello scacciare le manifestazioni demoniache e difendere le comunità rurali dall'oscurità.
+                            </p>
+                        </div>
+
+                        <!-- Santo 2 -->
+                        <div class="santo-card">
+                            <div class="santo-icon">✙</div>
+                            <h3 class="santo-title">Padre Pio da Pietrelcina</h3>
+                            <p class="santo-desc">
+                                Nel XX secolo, il sacerdote cappuccino divenne un simbolo di lotta mistica, fisica e spirituale contro le vessazioni diaboliche. Le cronache e le testimonianze descrivono veri e propri scontri notturni e spirituali, incarnando l'archetipo del confessore che sperimenta il male sulla propria carne prima di liberare i fedeli.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Detail Panel 3: Caso 1949 -->
+                <div class="detail-pane" id="caso-1949">
+                    <div class="section-header" style="text-align: left; margin-bottom: 2rem;">
+                        <h2 class="section-title-accent">Cronaca e Realtà</h2>
+                        <p class="section-subtitle-accent">Il faldone storico che ispirò l'opera di Blatty</p>
+                    </div>
+                    <div style="color: rgba(245,245,247,0.85); display: flex; flex-direction: column; gap: 1.5rem;">
+                        <p>
+                            La forza e l'impatto culturale del cinema horror soprannaturale nascono spesso dalla loro profonda connessione con la realtà e con la cronaca giornalistica. William Peter Blatty, autore del romanzo originale, non inventò la sua storia dal nulla, ma si ispirò a un presunto caso di esorcismo realmente avvenuto nel 1949 nel Maryland.
+                        </p>
+                        <p>
+                            La vicenda coinvolse un ragazzo di quattordici anni, noto sotto gli pseudonimi di <strong>"Robbie Mannheim"</strong> o <strong>"Roland Doe"</strong> (spesso citato nella stampa dell'epoca come il "Ragazzo di Mount Rainier").
+                        </p>
+                        <p>
+                            Il caso è autenticamente documentato nei registri e nelle cronache della Chiesa cattolica dell'epoca. Questo legame con la realtà spinse Blatty a intraprendere anni di ricerche meticolose presso la Georgetown University, dando alle vicende del romanzo una straordinaria coerenza procedurale e liturgica, che Friedkin riversò poi interamente nel realismo crudo del film del 1973.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Detail Panel 4: Diario & Registri -->
+                <div class="detail-pane" id="diario-registri">
+                    <div class="section-header" style="text-align: left; margin-bottom: 2rem;">
+                        <h2 class="section-title-accent">Registri & Liturgia</h2>
+                        <p class="section-subtitle-accent">Archivi geometrici delle fonti storiche</p>
+                    </div>
+                    
+                    <div class="dossier-grid">
+                        <!-- Box 1 -->
+                        <div class="dossier-box">
+                            <span class="dossier-stamp">IL RAPPORTO DEI GESUITI</span>
+                            <h3 class="dossier-box-title">I Registri</h3>
+                            <p class="dossier-box-text">
+                                Le cronache descrivono fenomeni inquietanti occorsi nella casa del ragazzo dopo l'uso di una tavoletta Ouija: graffi profondi che comparivano sulla pelle formando scritte e parole di scherno, letti che tremavano violentemente, e oggetti pesanti che volavano nell'aria senza alcuna spiegazione scientifica o fisica.
+                            </p>
+                        </div>
+
+                        <!-- Box 2 -->
+                        <div class="dossier-box">
+                            <span class="dossier-stamp">IL DIARIO SEGRETO</span>
+                            <h3 class="dossier-box-title">Il Diario</h3>
+                            <p class="dossier-box-text">
+                                L'esorcismo fu guidato da Padre William S. Bowdern e documentato giorno per giorno in un diario dettagliato tenuto da Padre Raymond Bishop. Questo testo divenne la fonte primaria studiata da Blatty, spingendolo a un rigore liturgico nella stesura dell'opera. Questo legame indissolubile fece sì che il pubblico affrontasse la possibilità che il demonio non fosse una metafora, ma una presenza concreta nel mondo contemporaneo.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                
+            </main>
+        </div>
+
+        <!-- Dynamic Footer placeholder -->
+        <footer class="footer"></footer>
+
+    </div>
+
+    <!-- Inline Script for Tab Navigation -->
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const cards = document.querySelectorAll(".interactive-card");
+            const panes = document.querySelectorAll(".detail-pane");
+
+            cards.forEach(card => {
+                card.addEventListener("click", () => {
+                    const target = card.getAttribute("data-target");
+
+                    // Update active card
+                    cards.forEach(c => c.classList.remove("active"));
+                    card.classList.add("active");
+
+                    // Update active pane
+                    panes.forEach(p => {
+                        p.classList.remove("active");
+                        if (p.id === target) {
+                            p.classList.add("active");
+                        }
+                    });
+
+                    // Scroll to active content pane on mobile/tablet
+                    if (window.innerWidth <= 768) {
+                        const targetPane = document.getElementById(target);
+                        if (targetPane) {
+                            setTimeout(() => {
+                                const headerHeight = window.innerWidth <= 480 ? 70 : 80;
+                                const elementPosition = targetPane.getBoundingClientRect().top;
+                                const offsetPosition = elementPosition + window.scrollY - headerHeight - 15;
+                                window.scrollTo({
+                                    top: offsetPosition,
+                                    behavior: "smooth"
+                                });
+                            }, 50);
+                        }
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
