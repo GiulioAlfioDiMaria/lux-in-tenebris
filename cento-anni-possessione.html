@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="it">
 <head>
     <meta charset="UTF-8">
@@ -15,7 +15,7 @@
         
         <section class="timeline-section">
             <div class="timeline-title-block">
-                <span class="longform-meta">L'Evoluzione Cinematografica</span>
+                <span class="article-meta">L'Evoluzione Cinematografica</span>
                 <h1 class="timeline-heading">Cento Anni di Possessione</h1>
                 <p style="max-width: 600px; margin: 0 auto; font-size: 1rem; opacity: 0.85;">
                     Il fulcro storico dell'evoluzione dell'esorcista nel cinema. Una linea di luce attraversa le epoche, illuminando la lotta eterna tra il sacro e l'oscurità.
@@ -62,7 +62,7 @@
                             <span class="timeline-date">1937</span>
                             <h3 class="timeline-movie-title">The Dybbuk</h3>
                             <p class="timeline-desc">
-                                Capolavoro del cinema yiddish diretto in Polonia da Michał Waszyński. Introduce l'esorcismo nella tradizione mistica ebraica chassidica: lo spirito di un giovane defunto possiede il corpo della donna amata che era stata promessa a un altro uomo. L'esorcismo, guidato da un saggio rabbino, diventa un dramma corale solenne, dove il rito serve a riportare la giustizia spirituale e la pace all'anima tormentata.
+                                Capolavoro del cinema yiddish diretto in Polonia da MichaÅ‚ WaszyÅ„ski. Introduce l'esorcismo nella tradizione mistica ebraica chassidica: lo spirito di un giovane defunto possiede il corpo della donna amata che era stata promessa a un altro uomo. L'esorcismo, guidato da un saggio rabbino, diventa un dramma corale solenne, dove il rito serve a riportare la giustizia spirituale e la pace all'anima tormentata.
                             </p>
                         </div>
                     </div>
@@ -286,5 +286,43 @@
 
     </div>
 
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            function updateActiveTimelineItem() {
+                const items = document.querySelectorAll('.timeline-item');
+                if (items.length === 0) return;
+                
+                const triggerPoint = window.innerHeight * 0.45; // focus line at 45% of viewport height
+                let closestItem = null;
+                let minDistance = Infinity;
+                
+                items.forEach(item => {
+                    const rect = item.getBoundingClientRect();
+                    const nodePosition = rect.top + 20; // tracking point near the top node of the item
+                    const distance = Math.abs(nodePosition - triggerPoint);
+                    
+                    if (distance < minDistance) {
+                        minDistance = distance;
+                        closestItem = item;
+                    }
+                });
+                
+                items.forEach(item => {
+                    if (item === closestItem) {
+                        item.classList.add('active');
+                    } else {
+                        item.classList.remove('active');
+                    }
+                });
+            }
+
+            window.addEventListener('scroll', updateActiveTimelineItem);
+            window.addEventListener('resize', updateActiveTimelineItem);
+            
+            // Execute activation checks
+            updateActiveTimelineItem();
+            setTimeout(updateActiveTimelineItem, 100);
+        });
+    </script>
 </body>
 </html>

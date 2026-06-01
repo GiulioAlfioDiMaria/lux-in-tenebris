@@ -1,4 +1,4 @@
-/* -------------------------------------------------------------
+﻿/* -------------------------------------------------------------
  * LUX IN TENEBRIS - Shared Dynamic Navigation Injection
  * ------------------------------------------------------------- */
 
@@ -40,10 +40,10 @@ document.addEventListener("DOMContentLoaded", () => {
     pages.forEach((p, idx) => {
         const isMainCurrent = currentFile === p.file || (currentFile === "" && p.file === "index.html");
         const isSubpageActive = p.file === "pilastri.html" && [
-            "il-culto-1973.html",
-            "conflitto-scienza-fede.html",
-            "dubbio-moderno-rito.html",
-            "investigazione-laica.html",
+            "l-esorcista.html",
+            "emily-rose.html",
+            "il-rito.html",
+            "the-conjuring.html",
             "blockbuster-pop.html"
         ].includes(currentFile);
         
@@ -57,10 +57,10 @@ document.addEventListener("DOMContentLoaded", () => {
         
         if (p.file === "pilastri.html") {
             const subpages = [
-                { name: "L'Esorcista (1973)", file: "il-culto-1973.html" },
-                { name: "Emily Rose (2005)", file: "conflitto-scienza-fede.html" },
-                { name: "Il Rito (2011)", file: "dubbio-moderno-rito.html" },
-                { name: "The Conjuring (2013)", file: "investigazione-laica.html" },
+                { name: "L'Esorcista (1973)", file: "l-esorcista.html" },
+                { name: "Emily Rose (2005)", file: "emily-rose.html" },
+                { name: "Il Rito (2011)", file: "il-rito.html" },
+                { name: "The Conjuring (2013)", file: "the-conjuring.html" },
                 { name: "I Pop-Blockbuster", file: "blockbuster-pop.html" }
             ];
             
@@ -122,10 +122,10 @@ document.addEventListener("DOMContentLoaded", () => {
         dynamicFooterWrapper.className = "dynamic-footer-wrapper";
         dynamicFooterWrapper.innerHTML = `
             <!-- Section A3: Narrative / Overlapping Image Layout -->
-            <section class="overlapping-section">
-                <div class="overlap-left">
-                    <h2 class="overlap-title">GLI ESORCISTI<br>NEL CINEMA</h2>
-                    <p class="overlap-desc">
+            <section class="overlap-section">
+                <div class="overlap-content">
+                    <h2 class="overlap-heading">GLI ESORCISTI<br>NEL CINEMA</h2>
+                    <p class="overlap-text">
                         Un documentario esclusivo che ripercorre l'evoluzione del cinema di possessione, dalle radici dei classici immortali alle moderne chiavi di lettura laiche e scientifiche.
                     </p>
                     <a href="https://youtu.be/ubKGS2PW_xc" target="_blank" class="watch-video-btn">
@@ -136,7 +136,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     </a>
                 </div>
 
-                <div class="overlap-right" style="height: auto;">
+                <div class="overlap-media" style="height: auto;">
                     <div style="border: 1px solid var(--grid-color); padding: 10px; background-color: var(--card-bg); box-shadow: 0 0 30px rgba(140, 149, 249, 0.15);">
                         <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
                             <iframe src="https://www.youtube.com/embed/ubKGS2PW_xc" title="LUX IN TENEBRIS - Esorcisti nel Cinema" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe>

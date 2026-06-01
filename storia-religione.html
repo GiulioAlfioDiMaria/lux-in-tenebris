@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="it">
 <head>
     <meta charset="UTF-8">
@@ -81,15 +81,58 @@
             text-align: left;
             margin-inline: 0;
         }
+        
+        /* Mobile Carousel styling for interactive cards */
+        @media (max-width: 1024px) {
+            .interactive-sidebar {
+                flex-direction: row;
+                overflow-x: auto;
+                scroll-snap-type: x mandatory;
+                scrollbar-width: none;
+                -webkit-overflow-scrolling: touch;
+                gap: 1.25rem;
+                padding: 0.5rem 0; /* Align perfectly with layout content margins */
+                margin-left: 0;
+                margin-right: 0;
+            }
+            
+            .interactive-sidebar::-webkit-scrollbar {
+                display: none;
+            }
+            
+            .interactive-card {
+                flex: 0 0 290px; /* Wider card box */
+                scroll-snap-align: start;
+                transform: none !important;
+                box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+            }
+            
+            .interactive-card:hover, .interactive-card.active {
+                transform: none !important;
+            }
+            
+            .interactive-card::before {
+                left: 0;
+                top: 0;
+                height: 2px;
+                width: 100%;
+                background-color: var(--accent-color);
+                opacity: 0;
+                transition: var(--transition-smooth);
+            }
+            .interactive-card.active::before {
+                opacity: 1;
+            }
+        }
     </style>
 </head>
 <body>
 
     <div class="page-container">
         
-        <div class="split-layout-container">
-            <aside class="split-left-sidebar">
-                <h1 class="split-left-title">Le Radici Storiche</h1>
+        <div class="split-layout">
+            <aside class="sidebar">
+                <h1 class="sidebar-title">Le Radici Storiche</h1>
                 
                 <div class="interactive-sidebar">
                     <div class="interactive-card active" data-target="dogma">
@@ -119,7 +162,7 @@
             </aside>
 
             <!-- Right Column (Dynamic Detail Screen) -->
-            <main class="split-right-content">
+            <main class="content">
                 
                 <!-- Detail Panel 1: Dogma -->
                 <div class="detail-pane active" id="dogma">
@@ -244,6 +287,9 @@
                     // Update active card
                     cards.forEach(c => c.classList.remove("active"));
                     card.classList.add("active");
+
+                    // Center scroll active card in horizontal mobile carousel
+                    card.scrollIntoView({ behavior: "smooth", block: "nearest", inline: "center" });
 
                     // Update active pane
                     panes.forEach(p => {

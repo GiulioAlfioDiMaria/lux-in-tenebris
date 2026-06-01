@@ -1,4 +1,4 @@
-/* -------------------------------------------------------------
+﻿/* -------------------------------------------------------------
  * LUX IN TENEBRIS - Core Design System & Styling
  * Concept: Bene vs Male, Luce vs Oscurità, Cinematic Grid, Glow
  * ------------------------------------------------------------- */
@@ -23,7 +23,7 @@
     --card-bg: rgba(10, 14, 12, 0.6);
     --font-serif: 'ITC Symbol Std', Georgia, serif;
     --font-sans: 'neue-kabel', 'Inter', -apple-system, sans-serif;
-    --transition-smooth: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    --transition-smooth: all 0.3s ease-out;
 }
 
 * {
@@ -91,7 +91,7 @@ p {
 /* Ensure centered copy blocks remain centered with max-width */
 .section-header p,
 .timeline-title-block p,
-.longform-header p,
+.article-header p,
 .closing-quote {
     margin-inline: auto;
     text-align: center;
@@ -293,9 +293,7 @@ a {
     border-right: 1px solid var(--grid-color);
 }
 
-/* ──────────────────────────────────────────────────────────
- * LAYOUT TIPO A: Immersivo / "Hero-Centric" & Long-form
- * ────────────────────────────────────────────────────────── */
+/* Hero Banner & Long-form Articles */
 .layout-a-hero {
     min-height: calc(100vh - 80px);
     display: flex;
@@ -402,7 +400,7 @@ a {
     max-width: none;
 }
 
-.vertical-grid-cards {
+.cards-grid-vertical {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 1.5rem;
@@ -410,7 +408,7 @@ a {
     margin: 0 auto;
 }
 
-.double-grid-cards {
+.cards-grid-double {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 1.5rem;
@@ -418,7 +416,7 @@ a {
     margin: 0 auto;
 }
 
-.h-card-link {
+.card-horizontal {
     display: block;
     height: 280px;
     background-size: cover;
@@ -429,7 +427,7 @@ a {
     transition: var(--transition-smooth);
 }
 
-.h-card-link::after {
+.card-horizontal::after {
     content: '';
     position: absolute;
     bottom: 0;
@@ -440,23 +438,23 @@ a {
     transition: var(--transition-smooth);
 }
 
-.h-card-link:hover {
+.card-horizontal:hover {
     border-color: var(--accent-color);
     box-shadow: 0 0 25px rgba(140, 149, 249, 0.25);
     transform: translateY(-5px);
 }
 
-.h-card-link:hover .v-card-overlay {
+.card-horizontal:hover .card-overlay {
     background-color: transparent;
 }
 
-.h-card-link:hover .v-card-desc {
+.card-horizontal:hover .card-description {
     max-height: 120px;
     opacity: 1;
     margin-top: 0.5rem;
 }
 
-.v-card-link {
+.card-vertical {
     display: block;
     height: 480px;
     background-size: cover;
@@ -466,7 +464,7 @@ a {
     overflow: hidden;
 }
 
-.v-card-link::after {
+.card-vertical::after {
     content: '';
     position: absolute;
     bottom: 0;
@@ -477,7 +475,7 @@ a {
     transition: var(--transition-smooth);
 }
 
-.v-card-overlay {
+.card-overlay {
     position: absolute;
     top: 0;
     left: 0;
@@ -488,7 +486,7 @@ a {
     z-index: 1;
 }
 
-.v-card-content {
+.card-content {
     position: absolute;
     bottom: 0;
     left: 0;
@@ -498,7 +496,7 @@ a {
     transition: var(--transition-smooth);
 }
 
-.v-card-num {
+.card-number {
     font-family: var(--font-serif);
     font-size: 0.9rem;
     letter-spacing: 0.1em;
@@ -507,13 +505,13 @@ a {
     display: block;
 }
 
-.v-card-title {
+.card-title {
     font-size: 1.3rem;
     margin-bottom: 0.5rem;
     letter-spacing: 0.1em;
 }
 
-.v-card-desc {
+.card-description {
     font-size: 1rem;
     color: rgba(245, 245, 247, 0.6);
     line-height: 1.4;
@@ -524,24 +522,24 @@ a {
 }
 
 /* Hover behaviors */
-.v-card-link:hover {
+.card-vertical:hover {
     border-color: var(--accent-color);
     box-shadow: 0 0 25px rgba(140, 149, 249, 0.25);
     transform: translateY(-5px);
 }
 
-.v-card-link:hover .v-card-overlay {
+.card-vertical:hover .card-overlay {
     background-color: transparent;
 }
 
-.v-card-link:hover .v-card-desc {
+.card-vertical:hover .card-description {
     max-height: 120px;
     opacity: 1;
     margin-top: 0.5rem;
 }
 
 /* Home Section A3: Callout / Watch Video overlap Vibe */
-.overlapping-section {
+.overlap-section {
     padding: 4rem 4% 5rem;
     display: flex;
     align-items: center;
@@ -556,23 +554,23 @@ a {
     background-color: rgba(5, 7, 6, 0.9);
 }
 
-.overlap-left {
+.overlap-content {
     flex: 1;
 }
 
-.overlap-right {
+.overlap-media {
     flex: 1.2;
     position: relative;
     height: 450px;
 }
 
-.overlap-title {
+.overlap-heading {
     font-size: 2.8rem;
     margin-bottom: 2rem;
     line-height: 1.1;
 }
 
-.overlap-desc {
+.overlap-text {
     margin-bottom: 2.5rem;
     font-size: 1rem;
     line-height: 1.6;
@@ -694,7 +692,7 @@ a {
 }
 
 /* Home Section A4: Silhouette Bottom Callout */
-.bottom-callout-section {
+.bottom-banner {
     position: relative;
     height: 600px;
     background-size: cover;
@@ -706,7 +704,7 @@ a {
     border-top: 1px solid var(--grid-color);
 }
 
-.bottom-callout-overlay {
+.bottom-banner-overlay {
     position: absolute;
     top: 0;
     left: 0;
@@ -715,7 +713,7 @@ a {
     background: linear-gradient(to bottom, var(--bg-color) 0%, transparent 30%, transparent 70%, var(--bg-color) 100%);
 }
 
-.bottom-callout-text {
+.bottom-banner-text {
     position: relative;
     z-index: 2;
     max-width: 700px;
@@ -730,18 +728,18 @@ a {
 }
 
 /* Page 5 Variant: Long-form Saggio Visivo */
-.longform-container {
+.article-container {
     max-width: 1400px;
     margin: 0 auto;
     padding: 4rem 1.5rem 5rem;
 }
 
-.longform-header {
+.article-header {
     text-align: center;
     margin-bottom: 4rem;
 }
 
-.longform-meta {
+.article-meta {
     font-size: 0.8rem;
     text-transform: uppercase;
     letter-spacing: 0.25em;
@@ -750,7 +748,7 @@ a {
     margin-bottom: 1rem;
 }
 
-.longform-title {
+.article-title {
     font-size: 3rem;
     margin-bottom: 2rem;
     line-height: 1.2;
@@ -768,7 +766,7 @@ a {
     text-shadow: 0 0 10px var(--accent-glow);
 }
 
-.longform-body>p {
+.article-body>p {
     font-size: 1.15rem;
     line-height: 1.6;
     margin-bottom: 2.2rem;
@@ -778,14 +776,14 @@ a {
     margin-right: auto;
 }
 
-.longform-divider {
+.article-divider {
     height: 1px;
     background-color: var(--grid-color);
     margin: 4rem 0;
     position: relative;
 }
 
-.longform-divider::after {
+.article-divider::after {
     content: '✦';
     position: absolute;
     top: 50%;
@@ -797,7 +795,7 @@ a {
     font-size: 0.8rem;
 }
 
-.longform-quote {
+.article-quote {
     font-family: var(--font-serif);
     font-size: 1.15rem;
     color: var(--text-color);
@@ -812,14 +810,14 @@ a {
     position: relative;
 }
 
-.longform-quote p {
+.article-quote p {
     font-family: var(--font-serif);
     font-size: 1.15rem;
     color: var(--text-color);
     line-height: 1.6;
 }
 
-.character-analysis-section {
+.analysis-section {
     background: linear-gradient(180deg, rgba(140, 149, 249, 0.03) 0%, rgba(5, 7, 6, 0.3) 50%, rgba(140, 149, 249, 0.03) 100%);
     box-shadow: inset 0 0 40px rgba(140, 149, 249, 0.05);
     border-top: 1px solid var(--grid-color);
@@ -828,50 +826,48 @@ a {
     margin: 0;
 }
 
-.character-analysis-section .character-analysis {
+.analysis-section .analysis-grid {
     margin-top: 3rem;
     margin-bottom: 0;
 }
 
-.character-analysis {
+.analysis-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 2.5rem;
     margin: 3.5rem 0;
 }
 
-.character-card {
+.analysis-card {
     background-color: var(--card-bg);
     border: 1px solid var(--grid-color);
     padding: 2rem;
     transition: var(--transition-smooth);
 }
 
-.character-card:hover {
+.analysis-card:hover {
     border-color: var(--accent-color);
     box-shadow: 0 0 15px rgba(140, 149, 249, 0.15);
 }
 
-.character-card h3 {
+.analysis-card h3 {
     font-size: 1.2rem;
     margin-bottom: 1rem;
     color: var(--accent-color);
 }
 
-.character-card p {
+.analysis-card p {
     font-size: 1rem;
     line-height: 1.6;
 }
 
-/* ──────────────────────────────────────────────────────────
- * LAYOUT TIPO B: Documentale / "Split-Screen" Asimmetrico
- * ────────────────────────────────────────────────────────── */
-.split-layout-container {
+/* Split-Screen Layout (Sidebar & Main Content) */
+.split-layout {
     display: flex;
     min-height: calc(100vh - 80px);
 }
 
-.split-left-sidebar {
+.sidebar {
     width: 40%;
     border-right: 1px solid var(--grid-color);
     padding: 4rem 3%;
@@ -886,13 +882,13 @@ a {
     box-shadow: inset 0 0 40px rgba(140, 149, 249, 0.05);
 }
 
-.split-left-title {
+.sidebar-title {
     font-size: 2rem;
     line-height: 1.2;
     margin-bottom: 2rem;
 }
 
-.split-left-text {
+.sidebar-text {
     font-size: 1rem;
     line-height: 1.6;
     color: rgba(245, 245, 247, 0.75);
@@ -900,7 +896,7 @@ a {
     max-width: 75ch;
 }
 
-.split-right-content {
+.content {
     width: 60%;
     padding: 4rem 6% 4rem 4%;
     display: flex;
@@ -1050,9 +1046,7 @@ a {
     max-width: 75ch;
 }
 
-/* ──────────────────────────────────────────────────────────
- * LAYOUT TIPO C: Cronologico / "Timeline Progressiva"
- * ────────────────────────────────────────────────────────── */
+/* Timeline Layout */
 .timeline-section {
     max-width: 1400px;
     margin: 0 auto;
@@ -1112,7 +1106,7 @@ a {
     transition: var(--transition-smooth);
 }
 
-.timeline-item:hover .timeline-node {
+.timeline-item.active .timeline-node {
     background-color: var(--accent-color);
     box-shadow: 0 0 15px var(--accent-color), 0 0 5px var(--accent-color);
     transform: translateX(-50%) scale(1.2);
@@ -1123,7 +1117,7 @@ a {
     transition: var(--transition-smooth);
 }
 
-.timeline-item:hover .timeline-content-wrapper {
+.timeline-item.active .timeline-content-wrapper {
     transform: translateY(-5px);
 }
 
@@ -1134,7 +1128,7 @@ a {
     transition: var(--transition-smooth);
 }
 
-.timeline-item:hover .timeline-card {
+.timeline-item.active .timeline-card {
     border-color: var(--accent-color);
     box-shadow: 0 0 20px rgba(140, 149, 249, 0.15);
 }
@@ -1263,9 +1257,7 @@ a {
     max-width: 75ch;
 }
 
-/* ──────────────────────────────────────────────────────────
- * LAYOUT TIPO D: Griglia Modulare / "Broken Grid & Cards"
- * ────────────────────────────────────────────────────────── */
+/* Broken Grid Layout */
 .broken-grid-container {
     max-width: 1100px;
     margin: 0 auto;
@@ -1424,9 +1416,7 @@ a {
     max-width: 75ch;
 }
 
-/* ──────────────────────────────────────────────────────────
- * LAYOUT TIPO E: Funzionale / "Dashboard & Infografica Geometrica"
- * ────────────────────────────────────────────────────────── */
+/* Dashboard & Comparison Column Layout */
 .dashboard-container {
     max-width: 1400px;
     margin: 0 auto;
@@ -1507,7 +1497,7 @@ a {
 }
 
 /* Archetype Comparison Grid (Traditional vs Modern) */
-.archetipo-comparison-grid {
+.comparison-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 2.5rem;
@@ -1639,20 +1629,20 @@ a {
 
 /* Responsive adjustments */
 @media (max-width: 1024px) {
-    .vertical-grid-cards {
+    .cards-grid-vertical {
         grid-template-columns: repeat(2, 1fr);
     }
 
-    .v-card-link {
+    .card-vertical {
         height: 380px;
     }
 
-    .split-layout-container,
+    .split-layout,
     .millennio-layout {
         flex-direction: column;
     }
 
-    .split-left-sidebar,
+    .sidebar,
     .millennio-sidebar {
         width: 100%;
         height: auto;
@@ -1662,17 +1652,17 @@ a {
         border-bottom: 1px solid var(--grid-color);
     }
 
-    .split-right-content,
+    .content,
     .millennio-grid-content {
         width: 100%;
     }
 
-    .overlapping-section {
+    .overlap-section {
         flex-direction: column;
         gap: 3rem;
     }
 
-    .overlap-right {
+    .overlap-media {
         width: 100%;
         height: 350px;
     }
@@ -1683,16 +1673,16 @@ a {
         font-size: 2.8rem;
     }
 
-    .vertical-grid-cards,
-    .double-grid-cards {
+    .cards-grid-vertical,
+    .cards-grid-double {
         grid-template-columns: 1fr;
     }
 
     .santi-grid,
     .dossier-grid,
     .dashboard-grid,
-    .character-analysis,
-    .archetipo-comparison-grid {
+    .analysis-grid,
+    .comparison-grid {
         grid-template-columns: 1fr;
     }
 
@@ -1729,7 +1719,7 @@ a {
 }
 
 /* Triple grid layout for 3 columns on desktop, responsive for tablets and mobile */
-.triple-grid-cards {
+.cards-grid-triple {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 2.5rem;
@@ -1737,13 +1727,13 @@ a {
 }
 
 @media (max-width: 1024px) {
-    .triple-grid-cards {
+    .cards-grid-triple {
         grid-template-columns: repeat(2, 1fr);
     }
 }
 
 @media (max-width: 768px) {
-    .triple-grid-cards {
+    .cards-grid-triple {
         grid-template-columns: 1fr;
     }
 }
@@ -1774,17 +1764,17 @@ a {
     /* Standardise mobile container paddings to ensure 1.25rem left/right margins */
     .cards-section,
     .timeline-section,
-    .longform-container,
+    .article-container,
     .horizontal-timeline-container,
     .broken-grid-container,
     .dashboard-container,
     .millennio-grid-content,
-    .split-right-content,
-    .split-left-sidebar,
+    .content,
+    .sidebar,
     .dossier-intro-section,
     .pillars-pop-section,
     .archetype-intro-section,
-    .character-analysis-section,
+    .analysis-section,
     .closing-project-box {
         padding: 3rem 1.25rem 4rem !important;
     }
@@ -1794,11 +1784,11 @@ a {
         font-size: 2.4rem !important;
     }
 
-    .overlap-title {
+    .overlap-heading {
         font-size: 2rem !important;
     }
 
-    .longform-title {
+    .article-title {
         font-size: 2.2rem !important;
     }
 
@@ -1810,7 +1800,7 @@ a {
         font-size: 2rem !important;
     }
 
-    .split-left-title {
+    .sidebar-title {
         font-size: 1.8rem !important;
     }
 
@@ -1821,7 +1811,7 @@ a {
     .santo-title,
     .dossier-panel-title,
     .panel-title,
-    .v-card-title,
+    .card-title,
     .timeline-movie-title {
         font-size: 1.15rem !important;
     }
@@ -1831,6 +1821,15 @@ a {
         width: 100% !important;
         max-width: 100% !important;
         box-sizing: border-box;
+    }
+
+    .comparison-column {
+        padding: 2rem 1.25rem !important;
+        gap: 1.5rem !important;
+    }
+
+    .comparison-heading {
+        font-size: 1.5rem !important;
     }
 }
 
@@ -1855,17 +1854,17 @@ a {
     /* Standardise mobile container paddings to ensure 1rem left/right margins */
     .cards-section,
     .timeline-section,
-    .longform-container,
+    .article-container,
     .horizontal-timeline-container,
     .broken-grid-container,
     .dashboard-container,
     .millennio-grid-content,
-    .split-right-content,
-    .split-left-sidebar,
+    .content,
+    .sidebar,
     .dossier-intro-section,
     .pillars-pop-section,
     .archetype-intro-section,
-    .character-analysis-section,
+    .analysis-section,
     .closing-project-box {
         padding: 2.5rem 1rem 3.5rem !important;
     }
@@ -1879,11 +1878,11 @@ a {
         font-size: 1rem;
     }
 
-    .overlap-title {
+    .overlap-heading {
         font-size: 1.6rem !important;
     }
 
-    .longform-title {
+    .article-title {
         font-size: 1.7rem !important;
     }
 
@@ -1895,7 +1894,7 @@ a {
         font-size: 1.6rem !important;
     }
 
-    .split-left-title {
+    .sidebar-title {
         font-size: 1.5rem !important;
     }
 
@@ -1906,9 +1905,13 @@ a {
     .santo-title,
     .dossier-panel-title,
     .panel-title,
-    .v-card-title,
+    .card-title,
     .timeline-movie-title {
         font-size: 1.05rem !important;
+    }
+
+    .film-hero-image {
+        height: 280px !important;
     }
 }
 
@@ -1929,4 +1932,13 @@ a {
 
 .cursor-glow.visible {
     opacity: 1;
+}
+
+/* Widescreen Banner Image styles for individual film pages */
+.film-hero-image {
+    width: 100%;
+    height: 500px;
+    object-fit: cover;
+    filter: grayscale(20%);
+    display: block;
 }
