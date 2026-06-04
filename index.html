@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="it">
 
 <head>
@@ -7,20 +7,67 @@
     <title>LUX IN TENEBRIS - L'Ingresso nell'Oscurità</title>
     <meta name="description"
         content="Un viaggio sul fascino oscuro degli esorcisti nel cinema, dal mito e la realtà fino ai capolavori del grande schermo.">
-    <!-- Adobe Fonts integration -->
+    <!-- Fonts -->
     <link rel="stylesheet" href="https://use.typekit.net/xdi4awz.css">
     <link rel="stylesheet" href="style.css">
     <script src="navigation.js" defer></script>
 </head>
 
 <body>
+    <header class="header-nav">
+        <a href="index.html" class="logo">
+            <span class="logo-main">LUX IN TENEBRIS</span>
+            <span class="logo-sub">Il Fascino Oscuro degli Esorcisti nel Cinema</span>
+        </a>
+        <button class="nav-menu-btn" id="navMenuBtn" aria-label="Toggle Menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+    </header>
+
+    <div class="nav-overlay" id="navOverlay">
+        <div class="nav-links-container">
+            <a href="index.html" class="nav-overlay-link active-page">
+                <span class="num">01.</span> L'Ingresso nell'Oscurità (Home)
+            </a>
+            <a href="storia-religione.html" class="nav-overlay-link ">
+                <span class="num">02.</span> Le Radici Storiche
+            </a>
+            <a href="cento-anni-possessione.html" class="nav-overlay-link ">
+                <span class="num">03.</span> Cento Anni di Possessione
+            </a>
+            <a href="pilastri.html" class="nav-overlay-link ">
+                <span class="num">04.</span> I Film di Culto
+            </a>
+            <div class="nav-submenu">
+                <a href="l-esorcista.html" class="nav-submenu-link ">
+                    • L'Esorcista (1973)
+                </a>
+                <a href="emily-rose.html" class="nav-submenu-link ">
+                    • Emily Rose (2005)
+                </a>
+                <a href="il-rito.html" class="nav-submenu-link ">
+                    • Il Rito (2011)
+                </a>
+                <a href="the-conjuring.html" class="nav-submenu-link ">
+                    • The Conjuring (2013)
+                </a>
+                <a href="blockbuster-pop.html" class="nav-submenu-link ">
+                    • I Pop-Blockbuster
+                </a>
+            </div>
+            <a href="anatomia-archetipo.html" class="nav-overlay-link ">
+                <span class="num">05.</span> Anatomia dell'Archetipo
+            </a>
+        </div>
+    </div>
 
     <div class="page-container">
-        <!-- Section A1: Hero Banner -->
         <section class="layout-a-hero" style="background-image: url('images/low-angle-view-church-against-sky.jpg');">
             <div class="hero-overlay-dark"></div>
 
-            <!-- Reference Inspired Spotlight Vectors -->
+            <!-- Spotlight vectors -->
             <svg class="spotlight-vector" viewBox="0 0 100 100" preserveAspectRatio="none"
                 style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 2;">
                 <defs>
@@ -46,7 +93,6 @@
             </div>
         </section>
 
-        <!-- Section A2: Popular Sections Cards (inspired by Reference "Popular Tours") -->
         <section class="cards-section">
             <div class="section-header">
                 <h2 class="section-title-accent">L'Inizio del Viaggio</h2>
@@ -54,7 +100,6 @@
             </div>
 
             <div class="cards-grid-double">
-                <!-- Card 1: Le Radici Storiche -->
                 <a href="storia-religione.html" class="card-horizontal"
                     style="background-image: url('images/Christ_heals_the_dumb_and_blind_demoniac.webp');">
                     <div class="card-overlay"></div>
@@ -66,7 +111,6 @@
                     </div>
                 </a>
 
-                <!-- Card 2: La Timeline dei Film -->
                 <a href="cento-anni-possessione.html" class="card-horizontal"
                     style="background-image: url('images/haxan.webp');">
                     <div class="card-overlay"></div>
@@ -88,7 +132,6 @@
             </div>
 
             <div class="cards-grid-vertical">
-                <!-- Card 01: L'Esorcista (1973) -->
                 <a href="l-esorcista.html" class="card-vertical"
                     style="background-image: url('images/L\'esorcista.png');">
                     <div class="card-overlay"></div>
@@ -100,7 +143,6 @@
                     </div>
                 </a>
 
-                <!-- Card 02: The Exorcism of Emily Rose (2005) -->
                 <a href="emily-rose.html" class="card-vertical"
                     style="background-image: url('images/The-Exorcism-of-Emily-Rose-2005-Scott-Derrickson-10.jpg');">
                     <div class="card-overlay"></div>
@@ -112,7 +154,6 @@
                     </div>
                 </a>
 
-                <!-- Card 03: Il Rito (2011) -->
                 <a href="il-rito.html" class="card-vertical"
                     style="background-image: url('images/il rito.jpg');">
                     <div class="card-overlay"></div>
@@ -124,7 +165,6 @@
                     </div>
                 </a>
 
-                <!-- Card 04: The Conjuring (2013) -->
                 <a href="the-conjuring.html" class="card-vertical"
                     style="background-image: url('images/The-Conjuring-Universe.jpg');">
                     <div class="card-overlay"></div>
@@ -138,7 +178,6 @@
             </div>
         </section>
 
-        <!-- Section A2.5: Archetype Introduction -->
         <section class="archetype-intro-section"
             style="border-top: 1px solid var(--grid-color); padding: 4rem 4% 5rem; position: relative;">
             <div class="section-header">
@@ -168,7 +207,6 @@
             </div>
         </section>
 
-        <!-- Section A4: Dark Callout (inspired by Silhouette reference) -->
         <section class="bottom-banner" style="background-image: url('images/silhouette.png');">
             <div class="bottom-banner-overlay"></div>
             <div class="bottom-banner-text">
@@ -176,8 +214,41 @@
             </div>
         </section>
 
-        <!-- Dynamic Footer placeholder -->
-        <footer class="footer"></footer>
+        <!-- Footer & documentary -->
+        <div class="dynamic-footer-wrapper">
+            <section class="overlap-section">
+                <div class="overlap-content">
+                    <h2 class="overlap-heading">GLI ESORCISTI<br>NEL CINEMA</h2>
+                    <p class="overlap-text">
+                        Un documentario esclusivo che ripercorre l'evoluzione del cinema di possessione, dalle radici dei classici immortali alle moderne chiavi di lettura laiche e scientifiche.
+                    </p>
+                    <a href="https://youtu.be/ubKGS2PW_xc" target="_blank" class="watch-video-btn">
+                        <svg width="12" height="15" viewBox="0 0 12 15" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M12 7.5L0 15V0L12 7.5Z"/>
+                        </svg>
+                        Guarda su YouTube
+                    </a>
+                </div>
+
+                <div class="overlap-media" style="height: auto;">
+                    <div style="border: 1px solid var(--grid-color); padding: 10px; background-color: var(--card-bg); box-shadow: 0 0 30px rgba(140, 149, 249, 0.15);">
+                        <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
+                            <iframe src="https://www.youtube.com/embed/ubKGS2PW_xc" title="LUX IN TENEBRIS - Esorcisti nel Cinema" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <footer class="footer">
+                <span>© 2026 LUX IN TENEBRIS.</span>
+                <div class="footer-socials">
+                    <a href="#" class="footer-social-link" aria-label="Instagram">IG</a>
+                    <a href="#" class="footer-social-link" aria-label="Facebook">FB</a>
+                    <a href="#" class="footer-social-link" aria-label="Twitter">TW</a>
+                    <a href="#" class="footer-social-link" aria-label="Telegram">TG</a>
+                </div>
+            </footer>
+        </div>
     </div>
 
 </body>
