@@ -1,4 +1,4 @@
-﻿/* -------------------------------------------------------------
+/* -------------------------------------------------------------
  * LUX IN TENEBRIS - Core Design System & Styling
  * Concept: Bene vs Male, Luce vs Oscurità, Cinematic Grid, Glow
  * ------------------------------------------------------------- */
@@ -223,6 +223,19 @@ a {
     width: fit-content;
     max-width: 600px;
     padding: 2rem 0;
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+}
+
+.nav-links-container::-webkit-scrollbar {
+    display: none;
+}
+
+@media (min-width: 1025px) {
+    .nav-links-container {
+        max-height: none;
+        overflow: visible;
+    }
 }
 
 .nav-overlay-link {
@@ -273,6 +286,16 @@ a {
     letter-spacing: 0.08em;
     transition: var(--transition-smooth);
     display: inline-block;
+}
+
+.nav-submenu-link::before {
+    content: "\25AA";
+    font-size: 0.75rem;
+    display: inline-block;
+    vertical-align: middle;
+    margin-right: 10px;
+    color: inherit;
+    transition: var(--transition-smooth);
 }
 
 .nav-submenu-link:hover,
@@ -377,8 +400,8 @@ a {
 }
 
 .cult-films-section {
-    background: linear-gradient(180deg, rgba(140, 149, 249, 0.03) 0%, rgba(5, 7, 6, 0.3) 50%, rgba(140, 149, 249, 0.03) 100%);
-    box-shadow: inset 0 0 40px rgba(140, 149, 249, 0.05);
+    background: linear-gradient(180deg, rgba(140, 149, 249, 0.08) 0%, rgba(18, 17, 24, 0.8) 50%, rgba(140, 149, 249, 0.08) 100%);
+    box-shadow: inset 0 0 60px rgba(140, 149, 249, 0.1);
 }
 
 .section-header {
@@ -818,8 +841,8 @@ a {
 }
 
 .analysis-section {
-    background: linear-gradient(180deg, rgba(140, 149, 249, 0.03) 0%, rgba(5, 7, 6, 0.3) 50%, rgba(140, 149, 249, 0.03) 100%);
-    box-shadow: inset 0 0 40px rgba(140, 149, 249, 0.05);
+    background: linear-gradient(180deg, rgba(140, 149, 249, 0.08) 0%, rgba(18, 17, 24, 0.8) 50%, rgba(140, 149, 249, 0.08) 100%);
+    box-shadow: inset 0 0 60px rgba(140, 149, 249, 0.1);
     border-top: 1px solid var(--grid-color);
     border-bottom: 1px solid var(--grid-color);
     padding: 4rem 4% 5rem;
@@ -843,11 +866,6 @@ a {
     border: 1px solid var(--grid-color);
     padding: 2rem;
     transition: var(--transition-smooth);
-}
-
-.analysis-card:hover {
-    border-color: var(--accent-color);
-    box-shadow: 0 0 15px rgba(140, 149, 249, 0.15);
 }
 
 .analysis-card h3 {
@@ -878,8 +896,8 @@ a {
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
-    background: linear-gradient(180deg, rgba(140, 149, 249, 0.03) 0%, rgba(5, 7, 6, 0.3) 50%, rgba(140, 149, 249, 0.03) 100%);
-    box-shadow: inset 0 0 40px rgba(140, 149, 249, 0.05);
+    background: linear-gradient(180deg, rgba(140, 149, 249, 0.08) 0%, rgba(18, 17, 24, 0.8) 50%, rgba(140, 149, 249, 0.08) 100%);
+    box-shadow: inset 0 0 60px rgba(140, 149, 249, 0.1);
 }
 
 .sidebar-title {
@@ -910,15 +928,17 @@ a {
     gap: 2rem;
 }
 
-.santo-card {
-    background-color: var(--card-bg);
-    border: 1px solid var(--grid-color);
+.santo-card,
+.dossier-box {
+    background: linear-gradient(135deg, rgba(140, 149, 249, 0.06) 0%, rgba(20, 19, 26, 0.6) 100%);
+    border: 1px solid rgba(140, 149, 249, 0.25);
     padding: 2.5rem;
     position: relative;
     transition: var(--transition-smooth);
 }
 
-.santo-card::before {
+.santo-card::before,
+.dossier-box::before {
     content: '';
     position: absolute;
     top: 0;
@@ -926,17 +946,8 @@ a {
     width: 100%;
     height: 2px;
     background: linear-gradient(90deg, var(--accent-color), transparent);
-    opacity: 0;
-    transition: var(--transition-smooth);
-}
-
-.santo-card:hover {
-    border-color: var(--accent-color);
-    box-shadow: 0 0 20px rgba(140, 149, 249, 0.15);
-}
-
-.santo-card:hover::before {
     opacity: 1;
+    transition: var(--transition-smooth);
 }
 
 .santo-icon {
@@ -992,35 +1003,7 @@ a {
     gap: 2.5rem;
 }
 
-.dossier-box {
-    border: 1px solid var(--grid-color);
-    padding: 3rem 2.5rem;
-    position: relative;
-    background-color: rgba(5, 7, 6, 0.3);
-    transition: var(--transition-smooth);
-}
-
-.dossier-box::after {
-    content: '';
-    position: absolute;
-    bottom: -1px;
-    right: -1px;
-    width: 20px;
-    height: 20px;
-    border-bottom: 1px solid var(--accent-color);
-    border-right: 1px solid var(--accent-color);
-    transition: var(--transition-smooth);
-}
-
-.dossier-box:hover {
-    border-color: rgba(140, 149, 249, 0.4);
-    box-shadow: inset 0 0 20px rgba(140, 149, 249, 0.05);
-}
-
-.dossier-box:hover::after {
-    width: 100%;
-    height: 100%;
-}
+/* .dossier-box styles are combined with .santo-card above */
 
 .dossier-stamp {
     font-size: 0.7rem;
@@ -1514,12 +1497,6 @@ a {
     display: flex;
     flex-direction: column;
     gap: 2.5rem;
-}
-
-.comparison-column:hover {
-    border-color: var(--accent-color);
-    transform: translateY(-5px);
-    box-shadow: 0 15px 40px rgba(140, 149, 249, 0.15);
 }
 
 .comparison-header {

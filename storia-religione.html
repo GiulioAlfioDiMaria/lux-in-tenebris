@@ -81,10 +81,58 @@
             text-align: left;
             margin-inline: 0;
         }
+
+        .mobile-dossier-selector-container {
+            display: none;
+            width: 100%;
+            margin-bottom: 0;
+        }
+
+        .mobile-dossier-selector {
+            width: 100%;
+            padding: 1rem 1.25rem;
+            background-color: var(--card-bg);
+            border: 1px solid var(--grid-color);
+            color: var(--text-color);
+            font-family: var(--font-sans);
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            cursor: pointer;
+            outline: none;
+            transition: var(--transition-smooth);
+            
+            /* Custom arrow */
+            appearance: none;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            background-image: url("data:image/svg+xml;utf8,<svg fill='%238c95f9' height='24' viewBox='0 0 24 24' width='24' xmlns='http://www.w3.org/2000/svg'><path d='M7 10l5 5 5-5z'/><path d='M0 0h24v24H0z' fill='none'/></svg>");
+            background-repeat: no-repeat;
+            background-position: right 1.25rem center;
+            background-size: 1.25rem;
+            padding-right: 3rem;
+        }
+
+        .mobile-dossier-selector:focus, .mobile-dossier-selector:hover {
+            border-color: var(--accent-color);
+            box-shadow: 0 0 15px rgba(140, 149, 249, 0.15);
+        }
+
+        .mobile-dossier-selector option {
+            background-color: #0a090a;
+            color: var(--text-color);
+        }
         
         /* Mobile Carousel styling for interactive cards */
         @media (max-width: 1024px) {
+            .mobile-dossier-selector-container {
+                display: block;
+            }
+            .sidebar {
+                padding: 1.5rem 1.25rem !important;
+            }
             .interactive-sidebar {
+                display: none !important;
                 flex-direction: row;
                 overflow-x: auto;
                 scroll-snap-type: x mandatory;
@@ -124,6 +172,51 @@
                 opacity: 1;
             }
         }
+
+        @media (min-width: 1025px) {
+            .sidebar {
+                padding-right: 0 !important;
+                overflow: visible !important;
+                border-right: none !important;
+                z-index: 2;
+            }
+            .interactive-sidebar {
+                margin-right: -1px;
+            }
+            .interactive-card {
+                background-color: var(--bg-color) !important;
+                position: relative;
+                z-index: 1;
+                border-right: none !important;
+            }
+            .interactive-card:hover {
+                border-color: var(--accent-color) !important;
+                border-right: 1px solid var(--accent-color) !important;
+                z-index: 6;
+                box-shadow: 0 0 15px rgba(140, 149, 249, 0.15);
+            }
+            .interactive-card.active {
+                background-color: var(--bg-color) !important;
+                border-color: var(--accent-color) !important;
+                border-right: 1px solid var(--bg-color) !important;
+                transform: translateX(3px) !important;
+                z-index: 10;
+                box-shadow: -5px 5px 15px rgba(0, 0, 0, 0.3), -5px -5px 15px rgba(0, 0, 0, 0.3);
+            }
+            .interactive-card.active:hover {
+                transform: translateX(3px) !important;
+            }
+            .content {
+                position: relative;
+                z-index: 1;
+                border-top: 1px solid var(--accent-color);
+                border-bottom: 1px solid var(--accent-color);
+                border-right: 1px solid var(--accent-color);
+                border-left: 1px solid var(--accent-color) !important;
+                box-shadow: 5px 5px 20px rgba(140, 149, 249, 0.08), 5px -5px 20px rgba(140, 149, 249, 0.08);
+                background-color: var(--bg-color);
+            }
+        }
     </style>
 </head>
 <body>
@@ -142,7 +235,7 @@
     <div class="nav-overlay" id="navOverlay">
         <div class="nav-links-container">
             <a href="index.html" class="nav-overlay-link ">
-                <span class="num">01.</span> L'Ingresso nell'OscuritÃ  (Home)
+                <span class="num">01.</span> L'Ingresso nell'Oscurità (Home)
             </a>
             <a href="storia-religione.html" class="nav-overlay-link active-page">
                 <span class="num">02.</span> Le Radici Storiche
@@ -155,19 +248,19 @@
             </a>
             <div class="nav-submenu">
                 <a href="l-esorcista.html" class="nav-submenu-link ">
-                    â€¢ L'Esorcista (1973)
+                    L'Esorcista (1973)
                 </a>
                 <a href="emily-rose.html" class="nav-submenu-link ">
-                    â€¢ Emily Rose (2005)
+                    Emily Rose (2005)
                 </a>
                 <a href="il-rito.html" class="nav-submenu-link ">
-                    â€¢ Il Rito (2011)
+                    Il Rito (2011)
                 </a>
                 <a href="the-conjuring.html" class="nav-submenu-link ">
-                    â€¢ The Conjuring (2013)
+                    The Conjuring (2013)
                 </a>
                 <a href="blockbuster-pop.html" class="nav-submenu-link ">
-                    â€¢ I Pop-Blockbuster
+                    I Pop-Blockbuster
                 </a>
             </div>
             <a href="anatomia-archetipo.html" class="nav-overlay-link ">
@@ -178,33 +271,42 @@
 
     <div class="page-container">
         
+        <header class="dossier-header-block" style="padding: 4rem 4% 2rem; margin-bottom: 0;">
+            <span class="dossier-meta">Dossier Storico</span>
+            <h1 class="dossier-heading">Le Radici Storiche</h1>
+        </header>
+        
         <div class="split-layout">
             <aside class="sidebar">
-                <h1 class="sidebar-title">Le Radici Storiche</h1>
+                
+                <div class="mobile-dossier-selector-container">
+                    <select id="mobileDossierSelector" class="mobile-dossier-selector">
+                        <option value="dogma">DOSSIER PART 01: Le Radici & Il Dogma</option>
+                        <option value="santi">DOSSIER PART 02: Esorcisti Leggendari</option>
+                        <option value="caso-1949">DOSSIER PART 03: Il Caso Reale del 1949</option>
+                        <option value="diario-registri">DOSSIER PART 04: Diario & Registri</option>
+                    </select>
+                </div>
                 
                 <div class="interactive-sidebar">
                     <div class="interactive-card active" data-target="dogma">
                         <span class="card-num">DOSSIER PART 01</span>
                         <h3>Le Radici & Il Dogma</h3>
-                        <p>L'origine biblica dell'esorcista e il Rituale Romano del 1614.</p>
                     </div>
                     
                     <div class="interactive-card" data-target="santi">
                         <span class="card-num">DOSSIER PART 02</span>
                         <h3>Esorcisti Leggendari</h3>
-                        <p>I santi esorcisti celebri nella lotta contro l'oscurità.</p>
                     </div>
                     
                     <div class="interactive-card" data-target="caso-1949">
                         <span class="card-num">DOSSIER PART 03</span>
                         <h3>Il Caso Reale del 1949</h3>
-                        <p>La cronaca documentata del ragazzo del Maryland.</p>
                     </div>
                     
                     <div class="interactive-card" data-target="diario-registri">
                         <span class="card-num">DOSSIER PART 04</span>
                         <h3>Diario & Registri</h3>
-                        <p>I documenti d'archivio gesuiti e le prove dei fenomeni.</p>
                     </div>
                 </div>
             </aside>
@@ -333,7 +435,7 @@
             </section>
 
             <footer class="footer">
-                <span>Â© 2026 LUX IN TENEBRIS.</span>
+                <span>© 2026 LUX IN TENEBRIS.</span>
                 <div class="footer-socials">
                     <a href="#" class="footer-social-link" aria-label="Instagram">IG</a>
                     <a href="#" class="footer-social-link" aria-label="Facebook">FB</a>
@@ -350,7 +452,9 @@
         document.addEventListener("DOMContentLoaded", () => {
             const cards = document.querySelectorAll(".interactive-card");
             const panes = document.querySelectorAll(".detail-pane");
+            const mobileSelector = document.getElementById("mobileDossierSelector");
 
+            // Card click behavior (desktop)
             cards.forEach(card => {
                 card.addEventListener("click", () => {
                     const target = card.getAttribute("data-target");
@@ -358,6 +462,11 @@
                     // Update active card
                     cards.forEach(c => c.classList.remove("active"));
                     card.classList.add("active");
+
+                    // Sync the mobile dropdown selector value
+                    if (mobileSelector) {
+                        mobileSelector.value = target;
+                    }
 
                     // Center scroll active card in horizontal mobile carousel
                     card.scrollIntoView({ behavior: "smooth", block: "nearest", inline: "center" });
@@ -369,24 +478,31 @@
                             p.classList.add("active");
                         }
                     });
-
-                    // Scroll to active content pane on mobile/tablet
-                    if (window.innerWidth <= 768) {
-                        const targetPane = document.getElementById(target);
-                        if (targetPane) {
-                            setTimeout(() => {
-                                const headerHeight = window.innerWidth <= 480 ? 70 : 80;
-                                const elementPosition = targetPane.getBoundingClientRect().top;
-                                const offsetPosition = elementPosition + window.scrollY - headerHeight - 15;
-                                window.scrollTo({
-                                    top: offsetPosition,
-                                    behavior: "smooth"
-                                });
-                            }, 50);
-                        }
-                    }
                 });
             });
+
+            // Mobile dropdown selector behavior
+            if (mobileSelector) {
+                mobileSelector.addEventListener("change", (e) => {
+                    const target = e.target.value;
+
+                    // Update active card
+                    cards.forEach(c => {
+                        c.classList.remove("active");
+                        if (c.getAttribute("data-target") === target) {
+                            c.classList.add("active");
+                        }
+                    });
+
+                    // Update active pane
+                    panes.forEach(p => {
+                        p.classList.remove("active");
+                        if (p.id === target) {
+                            p.classList.add("active");
+                        }
+                    });
+                });
+            }
         });
     </script>
 </body>
