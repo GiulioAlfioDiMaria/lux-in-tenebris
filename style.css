@@ -1,9 +1,3 @@
-/* -------------------------------------------------------------
- * LUX IN TENEBRIS - Core Design System & Styling
- * Concept: Bene vs Male, Luce vs Oscurità, Cinematic Grid, Glow
- * ------------------------------------------------------------- */
-
-/* Font Face declaration for local custom font */
 @font-face {
     font-family: 'ITC Symbol Std';
     src: local('ITC Symbol Std Book'), local('ITC Symbol Std Book Std'), local('ITC Symbol Std Regular'), local('ITC Symbol Std'), url('./font/ITC%20Symbol%20Std%20Bold.otf') format('opentype');
@@ -20,7 +14,6 @@
     font-display: swap;
 }
 
-/* CSS Reset & Variables */
 :root {
     --bg-color: #0a090a;
     --text-color: #F5F5F7;
@@ -55,7 +48,6 @@ body {
     background-color: var(--bg-color);
 }
 
-/* Background Grain Overlay */
 body::before {
     content: '';
     position: fixed;
@@ -63,14 +55,11 @@ body::before {
     left: 0;
     width: 100%;
     height: 100%;
-    background-image:
-        /* High-quality fine noise texture overlay */
-        url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.95' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.02'/%3E%3C/svg%3E");
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.95' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.02'/%3E%3C/svg%3E");
     pointer-events: none;
     z-index: 1;
 }
 
-/* Typography & General Elements */
 h1,
 h2,
 h3,
@@ -95,7 +84,6 @@ p {
     text-align: left;
 }
 
-/* Ensure centered copy blocks remain centered with max-width */
 .section-header p,
 .timeline-title-block p,
 .article-header p,
@@ -110,7 +98,6 @@ a {
     transition: var(--transition-smooth);
 }
 
-/* Navigation Layout Styles */
 .header-nav {
     position: fixed;
     top: 0;
@@ -179,7 +166,6 @@ a {
     align-self: flex-end;
 }
 
-/* Active hamburger state */
 .nav-menu-btn.active span:nth-child(1) {
     transform: translateY(8.5px) rotate(45deg);
 }
@@ -193,7 +179,6 @@ a {
     transform: translateY(-8.5px) rotate(-45deg);
 }
 
-/* Overlay Navigation Fullscreen */
 .nav-overlay {
     position: fixed;
     top: 0;
@@ -231,20 +216,11 @@ a {
     max-width: 600px;
     padding: 2rem 0;
     -ms-overflow-style: none;
-    /* IE and Edge */
     scrollbar-width: none;
-    /* Firefox */
 }
 
 .nav-links-container::-webkit-scrollbar {
     display: none;
-}
-
-@media (min-width: 1025px) {
-    .nav-links-container {
-        max-height: none;
-        overflow: visible;
-    }
 }
 
 .nav-overlay-link {
@@ -274,7 +250,6 @@ a {
     text-shadow: 0 0 10px var(--accent-glow);
 }
 
-/* Navigation Submenu Styles */
 .nav-submenu {
     display: flex;
     flex-direction: column;
@@ -325,7 +300,6 @@ a {
     border-right: 1px solid var(--grid-color);
 }
 
-/* Hero Banner & Long-form Articles */
 .layout-a-hero {
     min-height: calc(100vh - 80px);
     display: flex;
@@ -347,8 +321,7 @@ a {
     left: 0;
     width: 100%;
     height: 100%;
-    background:
-        radial-gradient(circle at center, rgba(10, 9, 10, 0.3) 0%, rgba(10, 9, 10, 0.85) 60%, var(--bg-color) 95%),
+    background: radial-gradient(circle at center, rgba(10, 9, 10, 0.3) 0%, rgba(10, 9, 10, 0.85) 60%, var(--bg-color) 95%),
         linear-gradient(to bottom, rgba(10, 9, 10, 0.4) 0%, rgba(10, 9, 10, 0.8) 100%);
     z-index: 1;
 }
@@ -406,7 +379,6 @@ a {
     z-index: 2;
 }
 
-/* Home Section A2: Cards Grid */
 .cards-section {
     padding: 4rem 4% 5rem;
     border-top: 1px solid var(--grid-color);
@@ -453,63 +425,42 @@ a {
     margin: 0 auto;
 }
 
-.card-horizontal {
+.card-horizontal,
+.card-vertical {
     display: block;
-    height: 280px;
     background-size: cover;
     background-position: center;
     position: relative;
     border: 1px solid rgba(140, 149, 249, 0.15);
     overflow: hidden;
+}
+
+.card-horizontal {
+    height: 280px;
     transition: var(--transition-smooth);
-}
-
-.card-horizontal::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    height: 80%;
-    background: linear-gradient(to top, rgba(5, 7, 6, 0.95) 0%, transparent 100%);
-    transition: var(--transition-smooth);
-}
-
-.card-horizontal:hover {
-    border-color: var(--accent-color);
-    box-shadow: 0 0 25px rgba(140, 149, 249, 0.25);
-    transform: translateY(-5px);
-}
-
-.card-horizontal:hover .card-overlay {
-    background-color: transparent;
-}
-
-.card-horizontal:hover .card-description {
-    max-height: 120px;
-    opacity: 1;
-    margin-top: 0.5rem;
 }
 
 .card-vertical {
-    display: block;
     height: 480px;
-    background-size: cover;
-    background-position: center;
-    position: relative;
-    border: 1px solid rgba(140, 149, 249, 0.15);
-    overflow: hidden;
 }
 
+.card-horizontal::after,
 .card-vertical::after {
     content: '';
     position: absolute;
     bottom: 0;
     left: 0;
     width: 100%;
-    height: 60%;
     background: linear-gradient(to top, rgba(5, 7, 6, 0.95) 0%, transparent 100%);
     transition: var(--transition-smooth);
+}
+
+.card-horizontal::after {
+    height: 80%;
+}
+
+.card-vertical::after {
+    height: 60%;
 }
 
 .card-overlay {
@@ -518,7 +469,7 @@ a {
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(140, 149, 249, 0.05);
+    background-color: rgba(14, 149, 249, 0.05);
     transition: var(--transition-smooth);
     z-index: 1;
 }
@@ -558,16 +509,19 @@ a {
     transition: var(--transition-smooth);
 }
 
+.card-horizontal:hover,
 .card-vertical:hover {
     border-color: var(--accent-color);
     box-shadow: 0 0 25px rgba(140, 149, 249, 0.25);
     transform: translateY(-5px);
 }
 
+.card-horizontal:hover .card-overlay,
 .card-vertical:hover .card-overlay {
     background-color: transparent;
 }
 
+.card-horizontal:hover .card-description,
 .card-vertical:hover .card-description {
     max-height: 120px;
     opacity: 1;
@@ -700,7 +654,6 @@ a {
     color: var(--bg-color);
 }
 
-/* Positions of overlapping elements */
 .thumb-1 {
     top: 0;
     right: 0;
@@ -725,7 +678,6 @@ a {
     z-index: 3;
 }
 
-/* Home Section A4: Silhouette Bottom Callout */
 .bottom-banner {
     position: relative;
     height: 600px;
@@ -889,7 +841,6 @@ a {
     line-height: 1.6;
 }
 
-/* Split-Screen Layout (Sidebar & Main Content) */
 .split-layout {
     display: flex;
     min-height: calc(100vh - 80px);
@@ -971,14 +922,17 @@ a {
     margin-bottom: 1rem;
 }
 
-.santo-desc {
+.santo-desc,
+.dossier-box-text,
+.timeline-desc,
+.h-timeline-text,
+.millennio-card-text {
     font-size: 1rem;
     line-height: 1.6;
     text-align: left;
     max-width: 70ch;
 }
 
-/* Layout B variant: Page 6 - Dossier */
 .dossier-header-block {
     margin-bottom: 4rem;
     border-bottom: 1px solid var(--grid-color);
@@ -1013,8 +967,6 @@ a {
     gap: 2.5rem;
 }
 
-/* .dossier-box styles are combined with .santo-card above */
-
 .dossier-stamp {
     font-size: 0.7rem;
     letter-spacing: 0.2em;
@@ -1032,14 +984,6 @@ a {
     letter-spacing: 0.1em;
 }
 
-.dossier-box-text {
-    font-size: 1rem;
-    line-height: 1.6;
-    text-align: left;
-    max-width: 70ch;
-}
-
-/* Timeline Layout */
 .timeline-section {
     max-width: 1400px;
     margin: 0 auto;
@@ -1061,7 +1005,6 @@ a {
     padding: 2rem 0;
 }
 
-/* The vertical beam timeline line */
 .timeline-line {
     position: absolute;
     left: 50%;
@@ -1084,7 +1027,6 @@ a {
     justify-content: flex-start;
 }
 
-/* The glowing node */
 .timeline-node {
     position: absolute;
     left: 50%;
@@ -1140,14 +1082,6 @@ a {
     letter-spacing: 0.1em;
 }
 
-.timeline-desc {
-    font-size: 1rem;
-    line-height: 1.6;
-    text-align: left;
-    max-width: 70ch;
-}
-
-/* Layout C Variant: Page 4 - Timeline Orizzontale */
 .horizontal-timeline-container {
     padding: 4rem 4% 5rem;
     overflow-x: hidden;
@@ -1183,7 +1117,6 @@ a {
     position: relative;
 }
 
-/* Horizontal line connector */
 .h-timeline-item::after {
     content: '';
     position: absolute;
@@ -1243,14 +1176,6 @@ a {
     letter-spacing: 0.1em;
 }
 
-.h-timeline-text {
-    font-size: 1rem;
-    line-height: 1.6;
-    text-align: left;
-    max-width: 70ch;
-}
-
-/* Broken Grid Layout */
 .broken-grid-container {
     max-width: 1100px;
     margin: 0 auto;
@@ -1264,7 +1189,6 @@ a {
     margin-top: 4rem;
 }
 
-/* Asymmetric cards mapping */
 .bg-card {
     background-color: var(--card-bg);
     border: 1px solid var(--grid-color);
@@ -1286,7 +1210,6 @@ a {
     grid-column: 6 / 13;
     grid-row: 2;
     margin-top: -30px;
-    /* Overlap effect */
 }
 
 .bg-card-3 {
@@ -1316,7 +1239,6 @@ a {
     max-width: 70ch;
 }
 
-/* Specular layout positions for Page 7 */
 .bg-card-1-spec {
     grid-column: 7 / 13;
     grid-row: 1;
@@ -1334,7 +1256,6 @@ a {
     margin-top: -20px;
 }
 
-/* Page 8 Layout Variant: Sidebar + Grid */
 .millennio-layout {
     display: flex;
     min-height: calc(100vh - 80px);
@@ -1402,14 +1323,6 @@ a {
     margin-bottom: 1rem;
 }
 
-.millennio-card-text {
-    font-size: 1rem;
-    line-height: 1.6;
-    text-align: left;
-    max-width: 70ch;
-}
-
-/* Dashboard & Comparison Column Layout */
 .dashboard-container {
     max-width: 1400px;
     margin: 0 auto;
@@ -1451,7 +1364,6 @@ a {
     max-width: 70ch;
 }
 
-/* Clean Dashboard CSS Data Table */
 .minimal-table-wrapper {
     overflow-x: auto;
     margin-top: 1rem;
@@ -1479,7 +1391,6 @@ a {
     font-weight: 300;
 }
 
-/* Archetype Comparison Grid (Traditional vs Modern) */
 .comparison-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -1552,7 +1463,6 @@ a {
     max-width: 70ch;
 }
 
-/* Project closing section */
 .closing-project-box {
     margin-top: 0;
     border-top: 1px solid var(--grid-color);
@@ -1578,7 +1488,6 @@ a {
     display: inline-block;
 }
 
-/* Footer Section */
 .footer {
     border-top: 1px solid var(--grid-color);
     padding: 3rem 4%;
@@ -1604,98 +1513,6 @@ a {
     color: var(--accent-color);
 }
 
-/* Responsive adjustments */
-@media (max-width: 1024px) {
-    .cards-grid-vertical {
-        grid-template-columns: repeat(2, 1fr);
-    }
-
-    .card-vertical {
-        height: 380px;
-    }
-
-    .split-layout,
-    .millennio-layout {
-        flex-direction: column;
-    }
-
-    .sidebar,
-    .millennio-sidebar {
-        width: 100%;
-        height: auto;
-        position: relative;
-        top: 0;
-        border-right: none;
-        border-bottom: 1px solid var(--grid-color);
-    }
-
-    .content,
-    .millennio-grid-content {
-        width: 100%;
-    }
-
-    .overlap-section {
-        flex-direction: column;
-        gap: 3rem;
-    }
-
-    .overlap-media {
-        width: 100%;
-        height: 350px;
-    }
-}
-
-@media (max-width: 768px) {
-    .hero-title {
-        font-size: 2.8rem;
-    }
-
-    .cards-grid-vertical,
-    .cards-grid-double {
-        grid-template-columns: 1fr;
-    }
-
-    .santi-grid,
-    .dossier-grid,
-    .dashboard-grid,
-    .analysis-grid,
-    .comparison-grid {
-        grid-template-columns: 1fr;
-    }
-
-    .broken-grid {
-        display: flex;
-        flex-direction: column;
-        gap: 2rem;
-    }
-
-    .bg-card {
-        margin-top: 0 !important;
-    }
-
-    .timeline-line {
-        left: 20px;
-    }
-
-    .timeline-node {
-        left: 20px;
-    }
-
-    .timeline-item {
-        justify-content: flex-start;
-        padding-left: 45px;
-    }
-
-    .timeline-content-wrapper {
-        width: 100%;
-    }
-
-    .timeline-item:nth-child(even) {
-        justify-content: flex-start;
-    }
-}
-
-/* Triple grid layout for 3 columns on desktop, responsive for tablets and mobile */
 .cards-grid-triple {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -1703,196 +1520,11 @@ a {
     margin: 3.5rem 0;
 }
 
-@media (max-width: 1024px) {
-    .cards-grid-triple {
-        grid-template-columns: repeat(2, 1fr);
-    }
-}
-
-@media (max-width: 768px) {
-    .cards-grid-triple {
-        grid-template-columns: 1fr;
-    }
-}
-
-/* Responsive Pop block container in pilastri */
 .responsive-pop-container {
     padding: 4rem;
     gap: 4rem;
 }
 
-@media (max-width: 1024px) {
-    .responsive-pop-container {
-        padding: 3rem;
-        gap: 3rem;
-    }
-}
-
-@media (max-width: 768px) {
-    .responsive-pop-container {
-        padding: 2rem 1.5rem;
-        gap: 2rem;
-    }
-}
-
-/* Extra mobile styles for logo size, alignment and layout padding */
-@media (max-width: 768px) {
-
-    /* Standardise mobile container paddings to ensure 1.25rem left/right margins */
-    .cards-section,
-    .timeline-section,
-    .article-container,
-    .horizontal-timeline-container,
-    .broken-grid-container,
-    .dashboard-container,
-    .millennio-grid-content,
-    .content,
-    .sidebar,
-    .dossier-intro-section,
-    .pillars-pop-section,
-    .archetype-intro-section,
-    .analysis-section,
-    .closing-project-box {
-        padding: 3rem 1.25rem 4rem !important;
-    }
-
-    /* Mobile Typography Scaling */
-    .hero-title {
-        font-size: 2.4rem !important;
-    }
-
-    .overlap-heading {
-        font-size: 2rem !important;
-    }
-
-    .article-title {
-        font-size: 2.2rem !important;
-    }
-
-    .millennio-title {
-        font-size: 2rem !important;
-    }
-
-    .timeline-heading {
-        font-size: 2rem !important;
-    }
-
-    .sidebar-title {
-        font-size: 1.8rem !important;
-    }
-
-    .section-title-accent {
-        font-size: 1.7rem !important;
-    }
-
-    .santo-title,
-    .dossier-panel-title,
-    .panel-title,
-    .card-title,
-    .timeline-movie-title {
-        font-size: 1.15rem !important;
-    }
-
-    .nav-links-container {
-        padding: 2rem 1.5rem !important;
-        width: 100% !important;
-        max-width: 100% !important;
-        box-sizing: border-box;
-    }
-
-    .comparison-column {
-        padding: 2rem 1.25rem !important;
-        gap: 1.5rem !important;
-    }
-
-    .comparison-heading {
-        font-size: 1.5rem !important;
-    }
-}
-
-@media (max-width: 480px) {
-    .logo-main {
-        font-size: 1.1rem;
-    }
-
-    .logo-sub {
-        font-size: 0.55rem;
-    }
-
-    .header-nav {
-        height: 70px;
-        padding: 0 4%;
-    }
-
-    .page-container {
-        padding-top: 70px;
-    }
-
-    /* Standardise mobile container paddings to ensure 1rem left/right margins */
-    .cards-section,
-    .timeline-section,
-    .article-container,
-    .horizontal-timeline-container,
-    .broken-grid-container,
-    .dashboard-container,
-    .millennio-grid-content,
-    .content,
-    .sidebar,
-    .dossier-intro-section,
-    .pillars-pop-section,
-    .archetype-intro-section,
-    .analysis-section,
-    .closing-project-box {
-        padding: 2.5rem 1rem 3.5rem !important;
-    }
-
-    /* Extra Typography Scaling for smaller screens */
-    .hero-title {
-        font-size: 2rem !important;
-    }
-
-    .hero-subtitle {
-        font-size: 1rem;
-    }
-
-    .overlap-heading {
-        font-size: 1.6rem !important;
-    }
-
-    .article-title {
-        font-size: 1.7rem !important;
-    }
-
-    .millennio-title {
-        font-size: 1.6rem !important;
-    }
-
-    .timeline-heading {
-        font-size: 1.6rem !important;
-    }
-
-    .sidebar-title {
-        font-size: 1.5rem !important;
-    }
-
-    .section-title-accent {
-        font-size: 1.4rem !important;
-    }
-
-    .santo-title,
-    .dossier-panel-title,
-    .panel-title,
-    .card-title,
-    .timeline-movie-title {
-        font-size: 1.05rem !important;
-    }
-
-    .film-hero-image {
-        height: 280px !important;
-    }
-}
-
-/* Dynamic Ambient Background Glow */
 .cursor-glow {
     position: fixed;
     top: 0;
@@ -1911,7 +1543,6 @@ a {
     opacity: 1;
 }
 
-/* Widescreen Banner Image styles for individual film pages */
 .film-hero-image {
     width: 100%;
     height: 500px;
@@ -2019,6 +1650,7 @@ a {
         opacity: 0;
         transform: translateY(12px);
     }
+
     to {
         opacity: 1;
         transform: translateY(0);
@@ -2105,18 +1737,15 @@ a {
     color: var(--text-color);
 }
 
-@media (max-width: 1024px) {
-    .mobile-dossier-selector-container {
-        display: block;
-    }
+.split-layout {
+    min-height: 580px !important;
+}
 
-    .sidebar {
-        padding: 1.5rem 1.25rem !important;
-    }
-
-    .interactive-sidebar {
-        display: none !important;
-    }
+.sidebar {
+    height: auto !important;
+    position: relative !important;
+    top: auto !important;
+    overflow: visible !important;
 }
 
 @media (min-width: 1025px) {
@@ -2164,13 +1793,262 @@ a {
     }
 }
 
-.split-layout {
-    min-height: 580px !important;
+@media (max-width: 1024px) {
+    .cards-grid-vertical {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .card-vertical {
+        height: 380px;
+    }
+
+    .split-layout,
+    .millennio-layout {
+        flex-direction: column;
+    }
+
+    .sidebar,
+    .millennio-sidebar {
+        width: 100%;
+        height: auto;
+        position: relative;
+        top: 0;
+        border-right: none;
+        border-bottom: 1px solid var(--grid-color);
+    }
+
+    .content,
+    .millennio-grid-content {
+        width: 100%;
+    }
+
+    .overlap-section {
+        flex-direction: column;
+        gap: 3rem;
+    }
+
+    .overlap-media {
+        width: 100%;
+        height: 350px;
+    }
+
+    .cards-grid-triple {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .responsive-pop-container {
+        padding: 3rem;
+        gap: 3rem;
+    }
+
+    .mobile-dossier-selector-container {
+        display: block;
+    }
+
+    .sidebar {
+        padding: 1.5rem 1.25rem !important;
+    }
+
+    .interactive-sidebar {
+        display: none !important;
+    }
 }
 
-.sidebar {
-    height: auto !important;
-    position: relative !important;
-    top: auto !important;
-    overflow: visible !important;
+@media (max-width: 768px) {
+    .hero-title {
+        font-size: 2.8rem;
+    }
+
+    .cards-grid-vertical,
+    .cards-grid-double,
+    .santi-grid,
+    .dossier-grid,
+    .dashboard-grid,
+    .analysis-grid,
+    .comparison-grid,
+    .cards-grid-triple {
+        grid-template-columns: 1fr;
+    }
+
+    .broken-grid {
+        display: flex;
+        flex-direction: column;
+        gap: 2rem;
+    }
+
+    .bg-card {
+        margin-top: 0 !important;
+    }
+
+    .timeline-line,
+    .timeline-node {
+        left: 20px;
+    }
+
+    .timeline-item {
+        justify-content: flex-start;
+        padding-left: 45px;
+    }
+
+    .timeline-content-wrapper {
+        width: 100%;
+    }
+
+    .timeline-item:nth-child(even) {
+        justify-content: flex-start;
+    }
+
+    .responsive-pop-container {
+        padding: 2rem 1.5rem;
+        gap: 2rem;
+    }
+
+    .cards-section,
+    .timeline-section,
+    .article-container,
+    .horizontal-timeline-container,
+    .broken-grid-container,
+    .dashboard-container,
+    .millennio-grid-content,
+    .content,
+    .sidebar,
+    .dossier-intro-section,
+    .pillars-pop-section,
+    .archetype-intro-section,
+    .analysis-section,
+    .closing-project-box {
+        padding: 3rem 1.25rem 4rem !important;
+    }
+
+    .hero-title {
+        font-size: 2.4rem !important;
+    }
+
+    .overlap-heading {
+        font-size: 2rem !important;
+    }
+
+    .article-title {
+        font-size: 2.2rem !important;
+    }
+
+    .millennio-title {
+        font-size: 2rem !important;
+    }
+
+    .timeline-heading {
+        font-size: 2rem !important;
+    }
+
+    .sidebar-title {
+        font-size: 1.8rem !important;
+    }
+
+    .section-title-accent {
+        font-size: 1.7rem !important;
+    }
+
+    .santo-title,
+    .dossier-panel-title,
+    .panel-title,
+    .card-title,
+    .timeline-movie-title {
+        font-size: 1.15rem !important;
+    }
+
+    .nav-links-container {
+        padding: 2rem 1.5rem !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        box-sizing: border-box;
+    }
+
+    .comparison-column {
+        padding: 2rem 1.25rem !important;
+        gap: 1.5rem !important;
+    }
+
+    .comparison-heading {
+        font-size: 1.5rem !important;
+    }
+}
+
+@media (max-width: 480px) {
+    .logo-main {
+        font-size: 1.1rem;
+    }
+
+    .logo-sub {
+        font-size: 0.55rem;
+    }
+
+    .header-nav {
+        height: 70px;
+        padding: 0 4%;
+    }
+
+    .page-container {
+        padding-top: 70px;
+    }
+
+    .cards-section,
+    .timeline-section,
+    .article-container,
+    .horizontal-timeline-container,
+    .broken-grid-container,
+    .dashboard-container,
+    .millennio-grid-content,
+    .content,
+    .sidebar,
+    .dossier-intro-section,
+    .pillars-pop-section,
+    .archetype-intro-section,
+    .analysis-section,
+    .closing-project-box {
+        padding: 2.5rem 1rem 3.5rem !important;
+    }
+
+    .hero-title {
+        font-size: 2rem !important;
+    }
+
+    .hero-subtitle {
+        font-size: 1rem;
+    }
+
+    .overlap-heading {
+        font-size: 1.6rem !important;
+    }
+
+    .article-title {
+        font-size: 1.7rem !important;
+    }
+
+    .millennio-title {
+        font-size: 1.6rem !important;
+    }
+
+    .timeline-heading {
+        font-size: 1.6rem !important;
+    }
+
+    .sidebar-title {
+        font-size: 1.5rem !important;
+    }
+
+    .section-title-accent {
+        font-size: 1.4rem !important;
+    }
+
+    .santo-title,
+    .dossier-panel-title,
+    .panel-title,
+    .card-title,
+    .timeline-movie-title {
+        font-size: 1.05rem !important;
+    }
+
+    .film-hero-image {
+        height: 280px !important;
+    }
 }
